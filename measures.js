@@ -1,3 +1,4 @@
+
 var errors = require('restify-errors')
 
 const METERS_TO_YARDS_FACTOR = 1.0936
@@ -14,6 +15,9 @@ function measuresCalculator(req, res, next) {
     result = value * METERS_TO_YARDS_FACTOR
   else if(from === 'yards' && to === 'meters')
     result = value / METERS_TO_YARDS_FACTOR
+  else if(from === 'meters' && to === 'centimeters')
+    result = value * 100
+  
   
   if(result)
     res.send({
